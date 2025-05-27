@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-from mlops_reco_movies.config import EXTERNAL_DATA_DIR
+from config import EXTERNAL_DATA_DIR
 import requests
 
 
