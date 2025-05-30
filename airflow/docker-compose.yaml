@@ -27,7 +27,7 @@
 #                                Default: apache/airflow:3.0.1
 # AIRFLOW_UID                  - User ID in Airflow containers
 #                                Default: 50000
-#AIRFLOW_PROJ_DIR             - Base path to which all the files will be volumed.
+# AIRFLOW_PROJ_DIR             - Base path to which all the files will be volumed.
 #                                Default: .
 # Those configurations are useful mostly in case of standalone testing/running Airflow in test/try-out mode
 #
@@ -53,12 +53,12 @@ x-airflow-common: &airflow-common
   environment: &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__CORE__AUTH_MANAGER: airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager
-    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${AIRFLOW_DB_USER}:${AIRFLOW_DB_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${AIRFLOW_DB}
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CORE__FERNET_KEY: ""
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
-    AIRFLOW__CORE__LOAD_EXAMPLES: "true"
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW__CORE__EXECUTION_API_SERVER_URL: "http://airflow-apiserver:8080/execution/"
     # yamllint disable rule:line-length
     # Use simple http server on scheduler for health checks
@@ -86,9 +86,9 @@ services:
   postgres:
     image: postgres:13
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${AIRFLOW_DB}
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     healthcheck:
