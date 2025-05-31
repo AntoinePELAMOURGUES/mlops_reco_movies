@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS movies (
+    id UUID PRIMARY KEY,
+    movieid INTEGER UNIQUE NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    genres VARCHAR,
+    year INTEGER
+);
