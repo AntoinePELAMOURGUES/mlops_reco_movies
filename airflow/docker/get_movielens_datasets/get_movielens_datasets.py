@@ -12,7 +12,7 @@ def download_and_save_file(url, raw_data_relative_path):
         url (str): L'URL de base pour télécharger les fichiers.
         raw_data_relative_path (str): Chemin relatif où les fichiers seront enregistrés.
     """
-    filenames = ["links.csv", "movies.csv", "ratings.csv"]
+    filenames = ["links.csv", "movies.csv", "ratings.csv", "tags.csv", "genome-scores.csv", "genome-tags.csv"]
     os.makedirs(raw_data_relative_path, exist_ok=True)  # Crée le répertoire si nécessaire
 
     for filename in filenames:

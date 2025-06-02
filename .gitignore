@@ -185,3 +185,8 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 /data
+
+#logs
+*.log
+*.logs
+/airflow/logs
