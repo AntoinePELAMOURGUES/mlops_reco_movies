@@ -4,9 +4,13 @@ from config import EXTERNAL_DATA_DIR
 import requests
 
 
+
+from config import PROCESSED_DATA_DIR, RAW_DATA_DIR
+
 def download_and_save_file(url, raw_data_relative_path):
     """
     Télécharge les fichiers CSV depuis l'URL donnée et les enregistre dans le chemin spécifié.
+
 
     Args:
         url (str): L'URL de base pour télécharger les fichiers.
