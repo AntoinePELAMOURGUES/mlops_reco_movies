@@ -1,29 +1,43 @@
 from pathlib import Path
+import os
+from config import EXTERNAL_DATA_DIR
+import requests
 
-from loguru import logger
-from tqdm import tqdm
-import typer
+
 
 from config import PROCESSED_DATA_DIR, RAW_DATA_DIR
 
-app = typer.Typer()
+def download_and_save_file(url, raw_data_relative_path):
+    """
+    Télécharge les fichiers CSV depuis l'URL donnée et les enregistre dans le chemin spécifié.
 
 
-@app.command()
-def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    input_path: Path = RAW_DATA_DIR / "dataset.csv",
-    output_path: Path = PROCESSED_DATA_DIR / "dataset.csv",
-    # ----------------------------------------------
-):
-    # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Processing dataset...")
-    for i in tqdm(range(10), total=10):
-        if i == 5:
-            logger.info("Something happened for iteration 5.")
-    logger.success("Processing dataset complete.")
-    # -----------------------------------------
+    Args:
+        url (str): L'URL de base pour télécharger les fichiers.
+        raw_data_relative_path (str): Chemin relatif où les fichiers seront enregistrés.
+    """
+    filenames = ["links.csv", "movies.csv", "ratings.csv"]
+
+    for filename in filenames:
+        data_url = os.path.join(url, filename)
+        try:
+            response = requests.get(data_url)
+            response.raise_for_status()  # Assure que la requête a réussi
+            print(f": Downloading {filename} from {data_url}")
+            file_path = os.path.join(raw_data_relative_path, filename)
+            with open(file_path, "wb") as file:
+                file.write(response.content)  # Écrit le contenu dans le fichier
+            print(f"File saved to {file_path}")
+
+        except requests.exceptions.RequestException as e:
+            print(f"Error downloading {filename}: {e}")
+        except IOError as e:
+            print(f"Error saving {filename}: {e}")
 
 
+# ...existing code...
 if __name__ == "__main__":
-    app()
+    print("############ DOWNLOADING INITIAL DATA ############")
+    raw_data_relative_path = EXTERNAL_DATA_DIR
+    bucket_folder_url = "https://mlops-project-db.s3.eu-west-1.amazonaws.com/movie_recommandation/"
+    download_and_save_file(url=bucket_folder_url, raw_data_relative_path=raw_data_relative_path)
