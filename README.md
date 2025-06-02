@@ -26,7 +26,7 @@ Création d'un système de recommandation de films
 │                         the creator's initials, and a short `-` delimited description, e.g.
 │                         `1.0-jqp-initial-data-exploration`.
 │
-├── pyproject.toml     <- Project configuration file with package metadata for 
+├── pyproject.toml     <- Project configuration file with package metadata for
 │                         mlops_reco_movies and configuration for tools like black
 │
 ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
@@ -49,9 +49,9 @@ Création d'un système de recommandation de films
     │
     ├── features.py             <- Code to create features for modeling
     │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
+    ├── modeling
+    │   ├── __init__.py
+    │   ├── predict.py          <- Code to run model inference with trained models
     │   └── train.py            <- Code to train models
     │
     └── plots.py                <- Code to create visualizations
@@ -59,3 +59,6 @@ Création d'un système de recommandation de films
 
 --------
 
+1. Recupérer depot github
+2. Création de son environnement avec conda -> se rendre dans /projet/configs puis `conda env create -f conda_env.yml`
+3.

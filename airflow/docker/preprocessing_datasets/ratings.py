@@ -20,17 +20,17 @@ def preprocess_ratings(df: pd.DataFrame) -> pd.DataFrame:
     try:
         # Typage et filtrage
         df = df.astype({"userId": "int32", "movieId": "int32"})
-        df = df.rename(columns={"userId": "userid", "movieId": "movieid"})
+        df = df.rename(columns={"userId": "user_id", "movieId": "movie_id"})
 
         if sample_ratio < 1.0:
             df = df.sample(frac=sample_ratio, random_state=42)
 
         if user_threshold > 0:
-            df = df[df["userid"] < user_threshold]
+            df = df[df["user_id"] < user_threshold]
 
         # Calcul de métriques
-        user_stats = df.groupby("userid")["rating"].agg(["count", "mean", "std"])
-        movie_stats = df.groupby("movieid")["rating"].agg(["count", "mean", "std"])
+        user_stats = df.groupby("user_id")["rating"].agg(["count", "mean", "std"])
+        movie_stats = df.groupby("movie_id")["rating"].agg(["count", "mean", "std"])
 
         # Enregistrement pour monitoring
         if os.getenv("LOG_STATS", "false").lower() == "true":
@@ -42,7 +42,7 @@ def preprocess_ratings(df: pd.DataFrame) -> pd.DataFrame:
         raise
 
     # Validation
-    assert df["userid"].between(1, 200000).all(), "Valeurs userid hors plage"
+    assert df["user_id"].between(1, 200000).all(), "Valeurs userid hors plage"
     logger.info(f"Ratings traités : {len(df)} lignes")
 
     return df
