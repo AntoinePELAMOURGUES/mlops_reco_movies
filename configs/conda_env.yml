@@ -3,12 +3,16 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.10 # Python 3.12 incompatible avec ces versions
-  - numpy=1.26.4
-  - seaborn=0.12.2
+  - python=3.12
   - jupyter
+  - numpy=1.26.4 # Version compatible avec spaCy 3.8
+  - pandas=2.2.2
+  - seaborn=0.13.2
+  - spacy=3.8.2
+  - thinc=8.3.2 # Version critique pour la compatibilité
+  - cupy=13.2.0 # Si utilisation GPU (adapter à ta version CUDA)
   - pip
   - pip:
-      - matplotlib==3.7.4
-      - scikit-learn==1.3.2
-      - pandas==2.1.3
+      - pandera==0.18.0 # Pour les validations de données
+      - plotly==5.18.0 # Visualisations avancées
+      - scikit-learn==1.6.0
