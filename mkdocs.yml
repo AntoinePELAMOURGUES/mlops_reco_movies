@@ -1,0 +1,69 @@
+site_name: Cahier de Bord - Projet Reco
+site_url: https://AntoinePELAMOURGUES.github.io/mlops_reco_movies
+theme:
+  name: material
+  font:
+    text: Victor Mono
+    code: Roboto
+  logo: assets/logo_reco_movies_2.png
+  palette:
+    # Mode sombre
+    - scheme: slate
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/weather-sunny
+        name: Passer en mode clair
+    # Mode clair
+    - scheme: default
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/weather-night
+        name: Passer en mode sombre
+  language: fr
+  features:
+    - navigation.instant
+    - toc.follow
+    - navigation.expand
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.indexes
+    - search.suggest
+
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    actions:
+      - accept
+      - manage
+
+plugins:
+  - search
+
+nav:
+  - 📝 Introduction: index.md
+  - 🚩 Systèmes de recommandation:
+      - Présentation: reco/index.md
+      - Filtrage collaboratif: reco/collaboratif.md
+      - Filtrage contenu: reco/contenu.md
+      - Approches hybrides: reco/hybrides.md
+  - ♻️ MLOps:
+      - Vue d’ensemble: mlops/index.md
+      - Reproductibilité & versionnement: mlops/repro.md
+      - Automatisation & CI/CD: mlops/cicd.md
+      - Déploiement & monitoring: mlops/deploiement.md
+  - 🗃️ Données: donnees.md
+  - 📚 Annexes:
+      - Bibliographie: annexes/biblio.md
+      - Outils & ressources: annexes/outils.md
