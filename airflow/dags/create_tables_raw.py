@@ -14,7 +14,7 @@ with DAG(
         "start_date": start_date,
     },
     catchup=False,
-    template_searchpath="/opt/airflow/dags/sql",
+    template_searchpath="/opt/airflow/dags/sql/create_tables_raw/",
 ) as dag:
 
     create_movies_table_raw = SQLExecuteQueryOperator(
