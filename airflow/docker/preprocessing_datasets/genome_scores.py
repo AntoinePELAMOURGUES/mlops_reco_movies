@@ -3,6 +3,7 @@ import pandas as pd
 import logging
 import os
 import numpy as np
+from pandas.api.types import is_float_dtype
 
 logger = logging.getLogger(__name__)
 
@@ -49,11 +50,10 @@ def preprocess_genome_scores(
         df = df[df["tag_id"].isin(valid_tags)]
 
         # Gestion des doublons complets
-        df = df.drop_duplicates(["movieId", "tagId"])
+        df = df.drop_duplicates(["movie_id", "tag_id"])
 
         # Optimisation mémoire dynamique
         if max_memory_usage:
-            from pandas.api.types import is_float_dtype
             for col in df.columns:
                 if is_float_dtype(df[col]):
                     df[col] = pd.to_numeric(df[col], downcast="float")
@@ -65,7 +65,7 @@ def preprocess_genome_scores(
         raise
 
     # Validation finale
-    assert df.merge(tags_df, on="tagId").notna().all().all(), "Références tagId invalides"
+    assert df.merge(tags_df, on="tag_id").notna().all().all(), "Références tagId invalides"
     logger.info(
         f"Prétraitement genome-scores terminé. "
         f"Lignes traitées : {len(df)} - Mémoire utilisée : {df.memory_usage().sum() / 1024**2:.1f}MB"
