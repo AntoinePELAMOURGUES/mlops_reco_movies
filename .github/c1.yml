@@ -13,13 +13,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Remove problematic symlink
-        run: rm -rf airflow/logs/dag_processor/latest
+
+      - name: Nettoyer les liens symboliques
+        run: |
+          rm -rf airflow/logs/dag_processor/latest
+          rm -rf ./site  # Nettoyer les builds précédents
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
       - run: pip install mkdocs-material
       - run: mkdocs build
-      - name: Create .nojekyll
+
+      - name: Créer .nojekyll
         run: touch ./site/.nojekyll
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./site
-      - uses: actions/deploy-pages@v4
+          path: ./site  # Cibler uniquement le dossier de build
+          exclude: |
+            **/airflow/
+            **/logs/
+            **/models/
+            **/notebooks/
