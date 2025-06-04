@@ -13,16 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure Git Credentials
-        run: |
-          git config user.name "Antoine Pelamourgues"
-          git config user.email "antoinepela@gmail.com"
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-
+      - name: Remove problematic symlink
+        run: rm -rf airflow/logs/dag_processor/latest
       - run: pip install mkdocs-material
-
-      - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+      - run: mkdocs build
+      - name: Create .nojekyll
+        run: touch ./site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+      - uses: actions/deploy-pages@v4
