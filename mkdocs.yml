@@ -76,3 +76,9 @@ nav:
       - Solutions & astuces: ressources/solutions.md
       - Liens utiles: ressources/liens.md
   - À venir: a-venir.md
+
+exclude_docs: |
+  airflow/
+  logs/
+  models/
+  notebooks/
