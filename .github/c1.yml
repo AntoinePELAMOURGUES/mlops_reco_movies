@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
@@ -12,7 +14,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -27,22 +29,19 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Supprimer les liens symboliques problématiques
-        run: rm -rf airflow/logs/dag_processor/latest
+      - name: Install mkdocs
+        run: pip install mkdocs-material
 
-      - run: pip install mkdocs-material
+      - name: Créer le site
+        run: mkdocs build --strict
 
-      - run: mkdocs build --strict
-
-      - name: Créer .nojekyll
-        run: touch ./site/.nojekyll
-
-      - uses: actions/upload-pages-artifact@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./site
-          exclude: |
-            **/airflow/
-            **/logs/
-
-      - uses: actions/deploy-pages@v4
+          # Upload dist folder
+          path: "./docs"
+      - name: Deploy to GitHub Pages
         id: deployment
+        uses: actions/deploy-pages@v4
