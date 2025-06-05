@@ -4,8 +4,11 @@ on:
   push:
     branches:
       - main
+
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
@@ -17,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Supprimer les liens symboliques
-        run: rm -rf airflow/logs/dag_processor/latest
+        run: rm -rf airflow/logs/*
 
       - uses: actions/setup-python@v5
         with:
