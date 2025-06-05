@@ -1,38 +1,38 @@
-name: build_mkdocs
-description: Build MkDocs documentation and deploy to GitHub Pages
-# This workflow builds the MkDocs documentation and deploys it to GitHub Pages.
+name: Deploy MkDocs
 
 on:
   push:
-    branches:
-      - main
-  merge_request:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Supprimer les liens symboliques
+        run: rm -rf airflow/logs/dag_processor/latest
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v4
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material # Ajouter les plugins ici
-      - run: mkdocs gh-deploy --force
+
+      - run: pip install mkdocs-material
+
+      - name: Deploy avec .nojekyll
+        run: |
+          mkdocs gh-deploy --force
+          git checkout gh-pages
+          touch .nojekyll
+          git add .nojekyll
+          git commit -m "Add .nojekyll" || exit 0
+          git push origin gh-pages
