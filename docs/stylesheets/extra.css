@@ -22,3 +22,7 @@
 .md-grid {
   max-width: 1440px;
 }
+
+.md-typeset p {
+  text-align: justify;
+}

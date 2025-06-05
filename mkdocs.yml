@@ -1,5 +1,12 @@
-site_name: Cahier de Bord - Projet Reco
+site_name: Cahier de Bord
 site_url: https://AntoinePELAMOURGUES.github.io/mlops_reco_movies
+site_dir: site/  # Forcer le build dans un dossier spécifique
+exclude_docs: |
+  airflow/
+  logs/
+  models/
+  notebooks/
+
 theme:
   name: material
   font:
@@ -23,15 +30,15 @@ theme:
         name: Passer en mode sombre
   language: fr
   features:
+    - navigation.tabs
     - navigation.instant
     - toc.follow
-    - navigation.expand
+    - navigation.tracking
     - navigation.instant.prefetch
     - navigation.instant.progress
     - navigation.sections
     - navigation.indexes
     - search.suggest
-
 
 extra_css:
   - stylesheets/extra.css
@@ -52,18 +59,29 @@ plugins:
   - search
 
 nav:
-  - 📝 Introduction: index.md
-  - 🚩 Systèmes de recommandation:
-      - Présentation: reco/index.md
-      - Filtrage collaboratif: reco/collaboratif.md
-      - Filtrage contenu: reco/contenu.md
-      - Approches hybrides: reco/hybrides.md
-  - ♻️ MLOps:
-      - Vue d’ensemble: mlops/index.md
-      - Reproductibilité & versionnement: mlops/repro.md
-      - Automatisation & CI/CD: mlops/cicd.md
-      - Déploiement & monitoring: mlops/deploiement.md
-  - 🗃️ Données: donnees.md
-  - 📚 Annexes:
-      - Bibliographie: annexes/biblio.md
-      - Outils & ressources: annexes/outils.md
+  - Accueil: index.md
+  - Introduction:
+      - Contexte: introduction/contexte.md
+      - Objectifs: introduction/objectifs.md
+      - Méthodologie: introduction/methodologie.md
+  - Journal de bord:
+      - Jour 1 - Premiers pas: journal/jour-1.md
+      - Jour 2 - Exploration des frameworks: journal/jour-2.md
+      - Jour 3 - Docker et conteneurs: journal/jour-3.md
+      # Ajoute autant de jours que tu veux, pour raconter ton histoire au fil du temps
+  - Architecture & Design:
+      - Structure des dossiers: architecture/structure-dossiers.md
+      - Collaboration GitHub: architecture/github.md
+      - Automatisation avec Airflow: architecture/airflow.md
+      - Conteneurisation avec Docker: architecture/docker.md
+      - Déploiement Kubernetes: architecture/kubernetes.md
+  - Suivi & Modèles:
+      - Suivi des modèles avec MLflow: suivi/mlflow.md
+      - Gestion des données avec Postgres: suivi/postgres.md
+  - Ressources & Réflexions:
+      - Problèmes rencontrés: ressources/problemes.md
+      - Solutions & astuces: ressources/solutions.md
+      - Liens utiles: ressources/liens.md
+  - À venir: a-venir.md
+
+
