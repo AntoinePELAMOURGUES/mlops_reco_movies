@@ -20,14 +20,5 @@ jobs:
       - name: Créer .nojekyll
         run: touch ./site/.nojekyll
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./site
-
-      - uses: actions/deploy-pages@v4
-        id: deployment
-
-
-      - uses: actions/deploy-pages@v4
-        id: deployment
-
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force

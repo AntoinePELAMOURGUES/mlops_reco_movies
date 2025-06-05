@@ -1,6 +1,6 @@
 # Data
 /data/
-airflow/logs/
+/airflow/logs/
 
 
 /airflow/logs/dag_processor/
