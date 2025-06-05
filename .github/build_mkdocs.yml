@@ -1,14 +1,9 @@
-name: build_mkdocs
-description: Build MkDocs documentation and deploy to GitHub Pages
-# This workflow builds the MkDocs documentation and deploys it to GitHub Pages.
+name: Deploy MkDocs
 
 on:
   push:
-    branches:
-      - main
-  merge_request:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,22 +12,33 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Supprimer les liens symboliques
+        run: rm -rf airflow/logs/dag_processor/latest
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v4
+
+      - run: pip install mkdocs-material
+      - run: mkdocs build --strict
+
+      - name: Créer .nojekyll
+        run: touch ./site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
         with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material # Ajouter les plugins ici
-      - run: mkdocs gh-deploy --force
+          path: ./site
+
+      - uses: actions/deploy-pages@v4
+        id: deployment
