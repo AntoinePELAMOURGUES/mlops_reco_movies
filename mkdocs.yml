@@ -1,6 +1,7 @@
 site_name: Cahier de Bord
-site_url: https://AntoinePELAMOURGUES.github.io/mlops_reco_movies
-site_dir: site/  # Forcer le build dans un dossier spécifique
+site_url: https://AntoinePELAMOURGUES.github.io/mlops_reco_movies/
+use_directory_urls: true
+site_dir: site/ # Forcer le build dans un dossier spécifique
 exclude_docs: |
   airflow/
   logs/
@@ -83,5 +84,3 @@ nav:
       - Solutions & astuces: ressources/solutions.md
       - Liens utiles: ressources/liens.md
   - À venir: a-venir.md
-
-
