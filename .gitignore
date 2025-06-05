@@ -1,7 +1,9 @@
 # Data
 /data/
-airflow/logs/
+/airflow/logs/
 
+
+/airflow/logs/dag_processor/
 
 # Mac OS-specific storage files
 .DS_Store
