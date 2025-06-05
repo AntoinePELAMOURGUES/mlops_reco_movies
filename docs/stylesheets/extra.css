@@ -26,3 +26,11 @@
 .md-typeset p {
   text-align: justify;
 }
+
+.profil-photo {
+  float: right;
+  width: 400px;         /* adapte la taille selon ton besoin */
+  height: auto;
+  margin-left: 30px;   /* espace entre la photo et le texte */
+  /* border-radius: 50%;   /* optionnel : effet "photo de profil ronde" */
+}
