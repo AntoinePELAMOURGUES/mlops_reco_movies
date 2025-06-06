@@ -66,4 +66,4 @@ Nous connectons ensuite Grafana à Prometheus pour créer des dashboards personn
 
 Des règles d’alerte sont mises en place dans Grafana : par exemple, en cas de latence trop élevée, de dérive du modèle ou de baisse de la précision, nous recevons immédiatement une notification par Slack ou email.
 
-Enfin, nous surveillons la dérive des données en intégrant des métriques spécifiques et en configurant des alertes dédiées, afin de pouvoir réagir rapidement à tout changement anormal dans les données ou les performances du modèle[1].
+Enfin, nous surveillons la dérive des données en intégrant des métriques spécifiques et en configurant des alertes dédiées, afin de pouvoir réagir rapidement à tout changement anormal dans les données ou les performances du modèle.
