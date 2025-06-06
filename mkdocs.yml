@@ -7,8 +7,8 @@ exclude_docs: |
   logs/
   models/
   notebooks/
-docs_dir: docs/  # Chemin explicite vers les sources Markdown
-strict: true     # Force MkDocs à échouer sur les erreurs de build
+docs_dir: docs/ # Chemin explicite vers les sources Markdown
+strict: true # Force MkDocs à échouer sur les erreurs de build
 
 theme:
   name: material
@@ -60,6 +60,14 @@ extra:
 
 plugins:
   - search
+  - mermaid2
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
   - Accueil: index.md

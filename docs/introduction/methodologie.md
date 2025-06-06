@@ -30,6 +30,7 @@ On va donc débuter par la mise en place de notre dépôt github et construire n
 
 Voici un premier diagramme de notre projet:
 
+```
 ```mermaid
 graph TD
     A[GitHub] --> B(Code/Config)
@@ -41,5 +42,4 @@ graph TD
     G --> E
     G --> F
     A -- CI/CD Sync --> G
-
-
+```
