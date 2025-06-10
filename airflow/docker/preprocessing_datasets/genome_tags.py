@@ -67,7 +67,7 @@ def preprocess_genome_tags(df: pd.DataFrame, min_term_freq: Optional[int] = 2) -
         raise
 
     # Validation finale
-    assert df["tagId"].is_unique, "IDs de tags dupliqués"
+    assert df["tag_id"].is_unique, "IDs de tags dupliqués"
     assert df["clean_tag"].str.len().gt(0).all(), "Tags vides après nettoyage"
     logger.info(f"Prétraitement genome-tags terminé. Tags traités : {len(df)}")
 
