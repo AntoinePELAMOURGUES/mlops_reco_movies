@@ -34,3 +34,11 @@
   margin-left: 30px;   /* espace entre la photo et le texte */
   /* border-radius: 50%;   /* optionnel : effet "photo de profil ronde" */
 }
+
+.jour-1-photo {
+  float: left;
+  width: 900px;         /* adapte la taille selon ton besoin */
+  height: auto;
+  margin-right: 30px;  /* espace entre la photo et le texte */
+  /* border-radius: 50%;   /* optionnel : effet "photo de profil ronde" */
+}
