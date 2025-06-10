@@ -100,8 +100,8 @@ nav:
       - Objectifs: introduction/objectifs.md
       - Méthodologie: introduction/methodologie.md
   - Journal de bord:
-      - Jour 1 - Premiers pas: journal/jour-1.md
-      - Jour 2 - Exploration des frameworks: journal/jour-2.md
+      - Jour 1 - Environnement de travail: journal/jour-1.md
+      - Jour 2 - Git et versionning: journal/jour-2.md
       - Jour 3 - Docker et conteneurs: journal/jour-3.md
       # Ajoute autant de jours que tu veux, pour raconter ton histoire au fil du temps
   - Architecture & Design:
