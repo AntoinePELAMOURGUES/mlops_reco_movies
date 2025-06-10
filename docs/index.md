@@ -1,3 +1,8 @@
+---
+hide:
+  - feedback
+---
+
 # ✨Bienvenue✨
 
 <img src="assets/index.png" alt="Photo de profil" class="profil-photo">

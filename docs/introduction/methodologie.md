@@ -1,3 +1,8 @@
+---
+hide:
+  - feedback
+---
+
 # METHODOLOGIE
 
 ## Principes généraux
@@ -12,13 +17,13 @@ Concrètement, cela signifie que je vais :
 - Suivre les expérimentations et versionner les modèles grâce à **MLflow**, ce qui permet de comparer objectivement les performances et de revenir à une version antérieure si besoin.
 
 L’ordre de mise en place est progressif :
+
 1. **GitHub** et la structuration du code pour poser les bases du versionnement.
 2. **Docker** pour garantir l’isolation et la portabilité dès les premiers tests.
 3. **MLflow** pour tracer les expérimentations dès le début de l’entraînement des modèles.
 4. **Airflow** pour automatiser et orchestrer le pipeline une fois les premières briques fonctionnelles.
 
 Cette méthodologie est pensée pour évoluer : elle pose un cadre robuste mais reste suffisamment souple pour s’adapter aux découvertes et besoins du projet au fil du temps. L’objectif est clair : industrialiser rapidement une première version (MVP), tout en préparant le terrain pour l’amélioration continue et la montée en charge.
-
 
 ## Première étape
 

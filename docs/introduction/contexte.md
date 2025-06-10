@@ -1,3 +1,8 @@
+---
+hide:
+  - feedback
+---
+
 ## **📝 Introduction**
 
 Plus les semaines d’apprentissage passent, plus le plaisir et l’envie d’en apprendre davantage inondent mon esprit. Et quoi de mieux pour apprendre qu’un projet? J’ai décidé de ne pas poursuivre celui choisi lors de ma formation de Data Scientist, à savoir l’exploration des approches multimodales de classification. Je souhaitais enrichir mes connaissances en m’intéressant cette fois-ci aux systèmes de recommandation. Il m’apparaissait essentiel de comprendre et d’analyser scientifiquement comment les différentes plateformes parviennent, grâce à nos données, à orienter nos choix.

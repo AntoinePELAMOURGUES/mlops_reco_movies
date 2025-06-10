@@ -1,3 +1,8 @@
+---
+hide:
+  - feedback
+---
+
 # 🎯 **Objectifs**
 
 _Documenter l’évolution de chaque brique du projet, garantir une approche structurée et scientifique, et préparer une mise en production robuste._
