@@ -36,14 +36,14 @@ On va donc débuter par la mise en place de notre dépôt github et construire n
 Voici un premier diagramme de notre projet:
 
 ```mermaid
-graph TD
-    A[GitHub] --> B(Code/Config)
-    B --> C{Docker}
-    C --> D[API FastAPI]
-    C --> E[Modèle]
-    C --> F[PostgreSQL]
-    G[Airflow] --> D
-    G --> E
-    G --> F
-    A -- CI/CD Sync --> G
+graph LR
+    A[GitHub] --> B(Code/Config);
+    B --> C{Docker};
+    C --> D[API FastAPI];
+    C --> E[Modèle];
+    C --> F[PostgreSQL];
+    G[Airflow] --> D;
+    G --> E;
+    G --> F;
+    A -- CI/CD Sync --> G;
 ```

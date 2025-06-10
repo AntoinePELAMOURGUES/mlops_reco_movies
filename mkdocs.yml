@@ -82,13 +82,16 @@ extra_javascript:
 
 plugins:
   - search
+  - git-revision-date-localized:
+      type: date          # Options : date, datetime, iso_date, iso_datetime, timeago
+      locale: fr          # Pour afficher la date en français (optionnel)
 
 markdown_extensions:
-  - pymdownx.superfences
-  - attr_list
-  - md_in_html
-  - toc:
-      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
   - Accueil: index.md
